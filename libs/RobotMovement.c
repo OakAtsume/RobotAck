@@ -41,3 +41,57 @@ void MovementBackward(int distance, int speed, tMotor leftPort, tMotor rightPort
     StopMotor(leftPort);
     StopMotor(rightPort);
 }
+
+// MovementLeft(int distance, int speed, tMotor leftPort, tMotor rightPort);
+
+void MovementLeft(int distance, int speed, tMotor leftPort, tMotor rightPort) {
+    nMotorEncoder[leftPort] = 0;
+    nMotorEncoder[rightPort] = 0;
+    while (nMotorEncoder[leftPort] > -distance) {
+        motor[leftPort] = -speed;
+        motor[rightPort] = speed;
+    }
+    StopMotor(leftPort);
+    StopMotor(rightPort);
+}
+
+// MovementRight(int distance, int speed, tMotor leftPort, tMotor rightPort);
+
+void MovementRight(int distance, int speed, tMotor leftPort, tMotor rightPort) {
+    nMotorEncoder[leftPort] = 0;
+    nMotorEncoder[rightPort] = 0;
+    while (nMotorEncoder[leftPort] < distance) {
+        motor[leftPort] = speed;
+        motor[rightPort] = -speed;
+    }
+    StopMotor(leftPort);
+    StopMotor(rightPort);
+}
+
+// MovementForwardLeft(int distance, int speed, tMotor leftPort, tMotor rightPort);
+
+void MovementForwardLeft(int distance, int speed, tMotor leftPort, tMotor rightPort) {
+    nMotorEncoder[leftPort] = 0;
+    nMotorEncoder[rightPort] = 0;
+    while (nMotorEncoder[leftPort] < distance) {
+        motor[leftPort] = speed / 2;
+        motor[rightPort] = speed;
+    }
+    StopMotor(leftPort);
+    StopMotor(rightPort);
+}
+
+// MovementForwardRight(int distance, int speed, tMotor leftPort, tMotor rightPort);
+
+void MovementForwardRight(int distance, int speed, tMotor leftPort, tMotor rightPort) {
+    nMotorEncoder[leftPort] = 0;
+    nMotorEncoder[rightPort] = 0;
+    while (nMotorEncoder[leftPort] < distance) {
+        motor[leftPort] = speed;
+        motor[rightPort] = speed / 2;
+    }
+    StopMotor(leftPort);
+    StopMotor(rightPort);
+}
+
+
