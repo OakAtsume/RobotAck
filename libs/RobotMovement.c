@@ -31,3 +31,13 @@ void MovementBackwards(int distance, int speed, tMotor leftPort, tMotor rightPor
     StopMotor(rightPort);
 }
 
+void MovementBackward(int distance, int speed, tMotor leftPort, tMotor rightPort) {
+    nMotorEncoder[leftPort] = 0;
+    nMotorEncoder[rightPort] = 0;
+    while (nMotorEncoder[leftPort] > -distance) {
+        motor[leftPort] = -speed;
+        motor[rightPort] = -speed;
+    }
+    StopMotor(leftPort);
+    StopMotor(rightPort);
+}
