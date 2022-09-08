@@ -1,99 +1,122 @@
-// Create a function called MotorPop() that will stop the movement of a given motor.
-//
+// Function called MotorStop(), which stops a given motor
 
-void MotorPop(tMotor motorPort)
-{
-    motor[motorPort] = 0;
+void MotorStop(int MotorCount) {
+    motor[MotorCount] = 0;
 }
 
-// Create a function called Pause() that will pause the program for a given amount of time.
-
-void Pause(int time)
-{
-    wait1Msec(time);
+// Pause
+void Pause(int Time) {
+    wait1Msec(Time);
 }
 
-// Create a function called Move() that will move the robot forward at a given speed for a given amount of time.
+// Function called MotorForward(), move a given left and right motor
 
-void Move(int speed, int time)
-{
-    setMotorSpeed(leftMotor, speed);
-    setMotorSpeed(rightMotor, speed);
-    Pause(time);
+void MotorForward(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = Speed;
+    motor[RightMotor] = Speed;
+    wait1Msec(Time);
 }
 
-// Create a function called Turn() that will turn the robot at a given speed for a given amount of time.
+// Function called MotorBackward(), move a given left and right motor
 
-void Turn(int speed, int time)
-{
-    setMotorSpeed(leftMotor, speed);
-    setMotorSpeed(rightMotor, -speed);
-    Pause(time);
+void MotorBackward(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = -Speed;
+    motor[RightMotor] = -Speed;
+    wait1Msec(Time);
 }
 
-// Create a function called Stop() that will stop the robot.
+// Function called MotorTurnLeft(), move a given left and right motor
 
-void Stop()
-{
-    setMotorSpeed(leftMotor, 0);
-    setMotorSpeed(rightMotor, 0);
+void MotorTurnLeft(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = -Speed;
+    motor[RightMotor] = Speed;
+    wait1Msec(Time);
 }
 
-// Create a function called MoveForward() that will move the robot forward at a given speed for a given amount of time.
+// Function called MotorTurnRight(), move a given left and right motor
 
-void MoveForward(int speed, int time)
-{
-    Move(speed, time);
+void MotorTurnRight(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = Speed;
+    motor[RightMotor] = -Speed;
+    wait1Msec(Time);
 }
 
-// Create a function called MoveBackward() that will move the robot backward at a given speed for a given amount of time.
+// Function called MotorForwardLeft(), move a given left and right motor
 
-void MoveBackward(int speed, int time)
-{
-    Move(-speed, time);
+void MotorForwardLeft(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = Speed/2;
+    motor[RightMotor] = Speed;
+    wait1Msec(Time);
 }
 
-// Create a function called TurnLeft() that will turn the robot left at a given speed for a given amount of time.
+// Function called MotorForwardRight(), move a given left and right motor
 
-void TurnLeft(int speed, int time)
-{
-    Turn(-speed, time);
+void MotorForwardRight(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = Speed;
+    motor[RightMotor] = Speed/2;
+    wait1Msec(Time);
 }
 
-// Create a function called TurnRight() that will turn the robot right at a given speed for a given amount of time.
+// Function called MotorBackwardLeft(), move a given left and right motor
 
-void TurnRight(int speed, int time)
-{
-    Turn(speed, time);
+void MotorBackwardLeft(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = -Speed/2;
+    motor[RightMotor] = -Speed;
+    wait1Msec(Time);
 }
 
-// Create a function called TurnRightAngle() that will turn the robot right, until it's at x angle
+// Function called MotorBackwardRight(), move a given left and right motor
 
-void TurnRightAngle(int speed, int angle)
-{
-    int currentAngle = 0;
-    while(currentAngle < angle)
-    {
-        Turn(speed, 100);
-        currentAngle += 90;
+void MotorBackwardRight(int LeftMotor, int RightMotor, int Speed, int Time) {
+    motor[LeftMotor] = -Speed;
+    motor[RightMotor] = -Speed/2;
+    wait1Msec(Time);
+}
+
+// Better function.
+
+// Function called LeftAngleRotate(), rotate a given left motor
+
+void LeftAngleRotate(int LeftMotor, int Speed, int Angle) {
+    nMotorEncoder[LeftMotor] = 0;
+    while (nMotorEncoder[LeftMotor] < Angle) {
+        motor[LeftMotor] = Speed;
     }
+    motor[LeftMotor] = 0;
 }
 
-// Create a function called TurnLeftAngle() that will turn the robot left, until it's at x angle
+// Function called RightAngleRotate(), rotate a given right motor
 
-void TurnLeftAngle(int speed, int angle)
-{
-    int currentAngle = 0;
-    while(currentAngle < angle)
-    {
-        Turn(-speed, 100);
-        currentAngle += 90;
+void RightAngleRotate(int RightMotor, int Speed, int Angle) {
+    nMotorEncoder[RightMotor] = 0;
+    while (nMotorEncoder[RightMotor] < Angle) {
+        motor[RightMotor] = Speed;
     }
+    motor[RightMotor] = 0;
 }
 
-// Create a function called AngleRight() that will turn the robot to a given angle with 50 motor speed.
+// Function called ForwardDistance(), move a given left and right motor
 
-void AngleRight(int angle)
-{
-    TurnRightAngle(50, angle);
+void ForwardDistance(int LeftMotor, int RightMotor, int Speed, int Distance) {
+    nMotorEncoder[LeftMotor] = 0;
+    nMotorEncoder[RightMotor] = 0;
+    while (nMotorEncoder[LeftMotor] < Distance) {
+        motor[LeftMotor] = Speed;
+        motor[RightMotor] = Speed;
+    }
+    motor[LeftMotor] = 0;
+    motor[RightMotor] = 0;
+}
+
+// Function called BackwardDistance(), move a given left and right motor
+
+void BackwardDistance(int LeftMotor, int RightMotor, int Speed, int Distance) {
+    nMotorEncoder[LeftMotor] = 0;
+    nMotorEncoder[RightMotor] = 0;
+    while (nMotorEncoder[LeftMotor] < Distance) {
+        motor[LeftMotor] = -Speed;
+        motor[RightMotor] = -Speed;
+    }
+    motor[LeftMotor] = 0;
+    motor[RightMotor] = 0;
 }
