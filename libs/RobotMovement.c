@@ -7,10 +7,10 @@ void Pause(int time) {
     wait1Msec(time);
 }
 
-void MovementForward() // int distance, int speed, tMotor leftPort, tMotor rightPort
+void MovementForward(int distance, int speed, tMotor leftPort, tMotor rightPort) // int distance, int speed, tMotor leftPort, tMotor rightPort
 {
     nMotorEncoder[leftPort] = 0;
-    nMotorEncoder[rightPort] = 0;
+    nMotorEncoder[rightPort] = 0;int distance, int speed, tMotor leftPort, tMotor rightPort
     while (nMotorEncoder[leftPort] < distance) {
         motor[leftPort] = speed;
         motor[rightPort] = speed;
@@ -19,7 +19,7 @@ void MovementForward() // int distance, int speed, tMotor leftPort, tMotor right
     StopMotor(rightPort);
 }
 
-void MovementBackwards() // int distance, int speed, tMotor leftPort, tMotor rightPort
+void MovementBackwards(int distance, int speed, tMotor leftPort, tMotor rightPort) // int distance, int speed, tMotor leftPort, tMotor rightPort
 {
     nMotorEncoder[leftPort] = 0;
     nMotorEncoder[rightPort] = 0;
