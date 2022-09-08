@@ -16,7 +16,7 @@
     Along side some basic information on how to use RobotC, and how to use the VEX Cortex Microcontroller </br>
 </p>
 
-<h2>I'm a student as Davis and I want to contribute.</h2>
+<h2>I'm a student at Davis and I want to contribute.</h2>
 <p>
     If you wish to contribute to RobotACK, speak to me during class or after school. </br>
     I will be happy to add you to the project, and you can start contributing. </br>
