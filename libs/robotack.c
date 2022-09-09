@@ -2,5 +2,5 @@
 // and providing a single interface to the user.
 // ----------------------------------------------------------------------
 
-#include "RobotMovement.c"
-
+#include "Movement.c"
+#include "Sensor.c"
