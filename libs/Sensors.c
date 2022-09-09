@@ -17,3 +17,15 @@ void GyroCorrect(int angle, tSensors gyroPort, tMotor leftPort, tMotor rightPort
     StopMotor(leftPort);
     StopMotor(rightPort);
 }
+
+// FetchGyro is a function that will fetch the gyro value
+// Args, sensor port
+int FetchGyro(tSensors gyroPort) {
+    return SensorValue[gyroPort];
+}
+
+// DistanceFetch, this will use an ultrasonic sensor to fetch the distance to an object
+// Args, sensor port
+int DistanceFetch(tSensors ultrasonicPort) {
+    return SensorValue[ultrasonicPort];
+}
